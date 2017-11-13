@@ -184,6 +184,8 @@ void init(void) {
 }
 
 int main(int argc, char *argv[]) {
+    // ウィンドウのサイズを指定
+    glutInitWindowSize(640, 480);
     // GLUT および OpenGL 環境の初期化
     glutInit(&argc, argv);
     // ディスプレイの表示モードを RGBA に設定し、ダブルバッファリングを有効にする
