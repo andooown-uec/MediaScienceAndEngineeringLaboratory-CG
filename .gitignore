@@ -1,2 +1,9 @@
 # バイナリ
+*.o
 *.out
+
+# デバッグ
+*.dSYM/
+
+# VS Code
+.vscode/
