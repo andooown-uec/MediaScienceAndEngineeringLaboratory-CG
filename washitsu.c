@@ -11,7 +11,7 @@ GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };   // 緑
 GLfloat blue[]  = { 0.2, 0.2, 0.8, 1.0 };   // 青
 GLfloat gray[]  = { 0.8, 0.8, 0.8, 1.0 };   // グレー    
 
-float posX = 0.0, posY = 1.0, posZ = 2.0;       // プレイヤーの位置
+GLdouble ex = 0.0, ey = 1.5, ez = 1.5;  // 視点の位置
 
 // アイドル時に実行される関数
 void idle(void) {
@@ -27,7 +27,7 @@ void display(void) {
 
     glLoadIdentity();
     // 視点位置と視線方向を設定
-    gluLookAt(posX, posY, posZ, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0);
+    gluLookAt(ex, ey, ez, ex, ey, ez + 3.0, 0.0, 1.0, 0.0);
 
     // 光源の位置設定
     glLightfv(GL_LIGHT0, GL_POSITION, light0pos);
@@ -72,16 +72,16 @@ void keyboard(unsigned char key, int x, int y) {
         case '\033':    // ESC
             exit(0);
         case 'w':
-            posZ -= step;
+            ez -= step;
             break;
         case 's':
-            posZ += step;
+            ez += step;
             break;
         case 'a':
-            posX -= step;
+            ex -= step;
             break;
         case 'd':
-            posX += step;
+            ex += step;
             break; 
         default:
             break;
