@@ -9,9 +9,11 @@ GLfloat light0pos[] = { 5.0, 3.0, 10.0, 1.0 };
 GLfloat red[]   = { 0.8, 0.2, 0.2, 1.0 };   // 赤
 GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };   // 緑
 GLfloat blue[]  = { 0.2, 0.2, 0.8, 1.0 };   // 青
-GLfloat gray[]  = { 0.8, 0.8, 0.8, 1.0 };   // グレー    
+GLfloat gray[]  = { 0.8, 0.8, 0.8, 1.0 };   // グレー
+GLfloat tatamiFrame[]  = { 0.000, 0.431, 0.329, 1.0 };   // 畳の縁
+GLfloat tatamiGround[] = { 0.765, 0.847, 0.145, 1.0 };   // 畳
 
-GLdouble ex = 0.0, ey = 1.5, ez = 1.5;  // 視点の位置
+GLdouble ex = 0.0, ey = 1.5, ez = 3.5;  // 視点の位置
 
 // アイドル時に実行される関数
 void idle(void) {
@@ -27,22 +29,76 @@ void display(void) {
 
     glLoadIdentity();
     // 視点位置と視線方向を設定
-    gluLookAt(ex, ey, ez, ex, ey, ez + 3.0, 0.0, 1.0, 0.0);
+    gluLookAt(ex, ey, ez, ex, ey, ez - 3.0, 0.0, 1.0, 0.0);
 
     // 光源の位置設定
     glLightfv(GL_LIGHT0, GL_POSITION, light0pos);
     
-    // 座標系を保存
+    // ***************************
+    // 畳の縁を描画
+    // ***************************
     glPushMatrix();
-    // 座標変換
-    glTranslated(-2.0, 0.0, -2.0);
-    glScaled(4.0, 1.0, 4.0);
-    // 材質を設定
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, gray);
-    // 地面を描画
+    glTranslated(-4.0, 0.0, -4.0);
+    glScaled(8.0, 1.0, 8.0);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, tatamiFrame);
     plate();
-    // 座標系を復元
     glPopMatrix();
+    // ***************************
+
+    // ***************************
+    // 畳を描画
+    // ***************************
+    // 材質を設定
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, tatamiGround);
+
+    glPushMatrix();
+    glTranslated(-4.0, 0.01, -3.9);
+    glScaled(4.0, 1.0, 1.8);
+    plate();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0.0, 0.01, -3.9);
+    glScaled(4.0, 1.0, 1.8);
+    plate();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-4.0, 0.01, 2.1);
+    glScaled(4.0, 1.0, 1.8);
+    plate();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(0.0, 0.01, 2.1);
+    glScaled(4.0, 1.0, 1.8);
+    plate();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-3.9, 0.01, -2.0);
+    glScaled(1.8, 1.0, 4.0);
+    plate();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(2.1, 0.01, -2.0);
+    glScaled(1.8, 1.0, 4.0);
+    plate();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-2.0, 0.01, -1.9);
+    glScaled(4.0, 1.0, 1.8);
+    plate();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslated(-2.0, 0.01, 0.1);
+    glScaled(4.0, 1.0, 1.8);
+    plate();
+    glPopMatrix();
+    // ***************************
 
     // バッファを交換
     glutSwapBuffers();
@@ -56,7 +112,7 @@ void resize(int w, int h) {
     // 透視変換行列の設定
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(30.0, (double)w / (double)h, 1.0, 100.0);
+    gluPerspective(50.0, (double)w / (double)h, 1.0, 100.0);
 
     // モデルビュー変換行列の設定
     glMatrixMode(GL_MODELVIEW);
@@ -93,8 +149,6 @@ void keyboard(unsigned char key, int x, int y) {
 
 // 初期化処理を行う関数
 void init(void) {
-    int i, j;
-
     // 乱数を初期化
     initRand();
 
