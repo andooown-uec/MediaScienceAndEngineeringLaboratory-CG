@@ -40,41 +40,11 @@ void display(void) {
     // 光源の位置設定
     glLightfv(GL_LIGHT0, GL_POSITION, light0pos);
     
-    // 建物を描画
-    for (i = 0; i < BUILDING_NUM; i++) {
-        for (j = 0; j < BUILDING_NUM; j++) {
-            // 座標系を保存
-            glPushMatrix();
-            // 座標変換
-            glTranslated(
-                -BUILDING_NUM / 2 + (double)i + 0.05 + (int)(i / 2.0) * 0.5 - 0.75,
-                0.0,
-                -BUILDING_NUM / 2 + (double)j + 0.05 + (int)(j / 2.0) * 0.5 - 0.75);
-            glScaled(0.9, buildings[i][j].height, 0.9);
-            // 材質を設定
-            switch (buildings[i][j].colorIndex) {
-                case 0:
-                    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, red);
-                    break;
-                case 1:
-                    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, green);
-                    break;
-                case 2:
-                    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, blue);
-                    break;                
-            }
-            // 描画
-            cube();
-            // 座標系を復元
-            glPopMatrix();
-        }
-    }
-    
     // 座標系を保存
     glPushMatrix();
     // 座標変換
-    glTranslated(-7.5, 0.0, -7.5);
-    glScaled(15.0, 1.0, 15.0);
+    glTranslated(-2.0, 0.0, -2.0);
+    glScaled(4.0, 1.0, 4.0);
     // 材質を設定
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, gray);
     // 地面を描画
