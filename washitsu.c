@@ -62,29 +62,6 @@ void resize(int w, int h) {
     glMatrixMode(GL_MODELVIEW);
 }
 
-// マウスイベントハンドラ
-void mouse(int button, int state, int x, int y) {
-    switch (button) {
-        case GLUT_LEFT_BUTTON:
-            if (state == GLUT_DOWN) {
-                // アニメーションを開始する
-                glutIdleFunc(idle);
-            } else {
-                // アニメーションを停止する
-                glutIdleFunc(0);
-            }
-            break;
-        case GLUT_RIGHT_BUTTON:
-            if (state == GLUT_DOWN) {
-                // 1 ステップだけ進める
-                glutPostRedisplay();
-            }
-            break;
-        default:
-            break;
-    }
-}
-
 // キーボードイベントハンドラ
 void keyboard(unsigned char key, int x, int y) {
     float step = 0.1;
@@ -144,7 +121,6 @@ int main(int argc, char *argv[]) {
     glutCreateWindow(argv[0]);
     glutDisplayFunc(display);   // 描画イベントハンドラ
     glutReshapeFunc(resize);    // リサイズイベントハンドラ
-    glutMouseFunc(mouse);       // マウスイベントハンドラ
     glutKeyboardFunc(keyboard); // キーボードイベントハンドラ
     // 初期化処理
     init();
