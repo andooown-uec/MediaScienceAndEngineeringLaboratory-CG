@@ -1,5 +1,5 @@
 // 立方体を描画する関数
-void cube(void);
+void cube(GLdouble x, GLdouble y, GLdouble z, GLdouble sizeX, GLdouble sizeY, GLdouble sizeZ);
 
 // 板を描画する関数
 void plate(void);

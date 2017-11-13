@@ -31,9 +31,14 @@ GLdouble cubeNormal[][3] = {
 };  // 法線
 
 // 立方体を描画する関数
-void cube(void) {
+void cube(GLdouble x, GLdouble y, GLdouble z, GLdouble sizeX, GLdouble sizeY, GLdouble sizeZ) {
     int i, j;
 
+    // 座標系を保存
+    glPushMatrix();
+    // 座標系を変換
+    glTranslated(x, y, z);
+    glScaled(sizeX, sizeY, sizeZ);    
     // 図形を描画
     glBegin(GL_QUADS);
     for (j = 0; j < 6; ++j) {
@@ -43,4 +48,6 @@ void cube(void) {
         }
     }
     glEnd();
+    // 座標系を復元
+    glPopMatrix();
 }
