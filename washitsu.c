@@ -34,71 +34,20 @@ void display(void) {
     // 光源の位置設定
     glLightfv(GL_LIGHT0, GL_POSITION, light0pos);
     
-    // ***************************
     // 畳の縁を描画
-    // ***************************
-    glPushMatrix();
-    glTranslated(-4.0, 0.0, -4.0);
-    glScaled(8.0, 1.0, 8.0);
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, tatamiFrame);
-    plate();
-    glPopMatrix();
-    // ***************************
+    plateXZ(-4.0, 0.0, -4.0, 8.0, 8.0);
 
-    // ***************************
     // 畳を描画
-    // ***************************
-    // 材質を設定
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, tatamiGround);
-
-    glPushMatrix();
-    glTranslated(-4.0, 0.01, -3.9);
-    glScaled(4.0, 1.0, 1.8);
-    plate();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(0.0, 0.01, -3.9);
-    glScaled(4.0, 1.0, 1.8);
-    plate();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(-4.0, 0.01, 2.1);
-    glScaled(4.0, 1.0, 1.8);
-    plate();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(0.0, 0.01, 2.1);
-    glScaled(4.0, 1.0, 1.8);
-    plate();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(-3.9, 0.01, -2.0);
-    glScaled(1.8, 1.0, 4.0);
-    plate();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(2.1, 0.01, -2.0);
-    glScaled(1.8, 1.0, 4.0);
-    plate();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(-2.0, 0.01, -1.9);
-    glScaled(4.0, 1.0, 1.8);
-    plate();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslated(-2.0, 0.01, 0.1);
-    glScaled(4.0, 1.0, 1.8);
-    plate();
-    glPopMatrix();
-    // ***************************
+    plateXZ( 2.1, 0.01, -2.0, 1.8, 4.0);
+    plateXZ( 0.0, 0.01, -3.9, 4.0, 1.8);
+    plateXZ( 0.0, 0.01,  2.1, 4.0, 1.8);
+    plateXZ(-2.0, 0.01, -1.9, 4.0, 1.8);
+    plateXZ(-2.0, 0.01,  0.1, 4.0, 1.8);
+    plateXZ(-3.9, 0.01, -2.0, 1.8, 4.0);
+    plateXZ(-4.0, 0.01, -3.9, 4.0, 1.8);
+    plateXZ(-4.0, 0.01,  2.1, 4.0, 1.8);
 
     // バッファを交換
     glutSwapBuffers();

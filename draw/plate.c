@@ -22,3 +22,16 @@ void plate(void) {
     }
     glEnd();
 }
+
+// XZ 平面に板を描画する関数
+void plateXZ(GLdouble x, GLdouble y, GLdouble z, GLdouble sizeX, GLdouble sizeZ) {
+    // 座標系を保存
+    glPushMatrix();
+    // 座標系を変換
+    glTranslated(x, y, z);
+    glScaled(sizeX, 1.0, sizeZ);
+    // 板を描画
+    plate();
+    // 座標系を復元
+    glPopMatrix();
+}
