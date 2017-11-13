@@ -4,13 +4,6 @@
 #include "draw/draw.h"
 #include "utility/utility.h"
 
-#define BUILDING_NUM 8  // 建物の 1 辺あたりの数
-
-typedef struct {
-    int colorIndex;     // 色
-    double height;      // 高さ
-} Building;
-
 GLfloat light0pos[] = { 5.0, 3.0, 10.0, 1.0 };
 
 GLfloat red[]   = { 0.8, 0.2, 0.2, 1.0 };   // 赤
@@ -18,8 +11,7 @@ GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };   // 緑
 GLfloat blue[]  = { 0.2, 0.2, 0.8, 1.0 };   // 青
 GLfloat gray[]  = { 0.8, 0.8, 0.8, 1.0 };   // グレー    
 
-float posX = 0.0, posY = 1.0, posZ = 10.0;      // プレイヤーの位置
-Building buildings[BUILDING_NUM][BUILDING_NUM]; // 建物
+float posX = 0.0, posY = 1.0, posZ = 2.0;       // プレイヤーの位置
 
 // アイドル時に実行される関数
 void idle(void) {
@@ -128,18 +120,6 @@ void init(void) {
 
     // 乱数を初期化
     initRand();
-
-    // 建物の初期化
-    for (i = 0; i < BUILDING_NUM; i++) {
-        for (j = 0; j < BUILDING_NUM; j++) {
-            // 色と高さを計算
-            int colIndex = randRange(3);
-            double hei = randRangef(0.7, 1.8);
-            // 建物を生成
-            Building b = { colIndex, hei };
-            buildings[i][j] = b;
-        }
-    }
 
     // ウィンドウを塗りつぶす色の設定
     glClearColor(1.0, 1.0, 1.0, 1.0);
