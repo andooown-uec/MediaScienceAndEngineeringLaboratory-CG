@@ -12,6 +12,7 @@ GLfloat blue[]  = { 0.2, 0.2, 0.8, 1.0 };   // 青
 GLfloat gray[]  = { 0.8, 0.8, 0.8, 1.0 };   // グレー
 GLfloat tatamiFrame[]  = { 0.000, 0.431, 0.329, 1.0 };  // 畳の縁
 GLfloat tatamiGround[] = { 0.765, 0.847, 0.145, 1.0 };  // 畳
+GLfloat wall[] = { 1.000, 0.910, 0.678, 1.0 };          // 壁
 GLfloat wood[] = { 0.588, 0.314, 0.212, 1.0 };          // 木材
 
 GLdouble ex = 0.0, ey = 1.5, ez = 3.5;  // 視点の位置
