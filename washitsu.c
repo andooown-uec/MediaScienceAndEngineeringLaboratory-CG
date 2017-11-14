@@ -4,14 +4,15 @@
 #include "draw/draw.h"
 #include "utility/utility.h"
 
-GLfloat light0pos[] = { 5.0, 3.0, 10.0, 1.0 };
+GLfloat light0pos[] = { 5.0, 5.0, 5.0, 1.0 };
 
 GLfloat red[]   = { 0.8, 0.2, 0.2, 1.0 };   // 赤
 GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };   // 緑
 GLfloat blue[]  = { 0.2, 0.2, 0.8, 1.0 };   // 青
 GLfloat gray[]  = { 0.8, 0.8, 0.8, 1.0 };   // グレー
-GLfloat tatamiFrame[]  = { 0.000, 0.431, 0.329, 1.0 };   // 畳の縁
-GLfloat tatamiGround[] = { 0.765, 0.847, 0.145, 1.0 };   // 畳
+GLfloat tatamiFrame[]  = { 0.000, 0.431, 0.329, 1.0 };  // 畳の縁
+GLfloat tatamiGround[] = { 0.765, 0.847, 0.145, 1.0 };  // 畳
+GLfloat wood[] = { 0.588, 0.314, 0.212, 1.0 };          // 木材
 
 GLdouble ex = 0.0, ey = 1.5, ez = 3.5;  // 視点の位置
 
@@ -48,6 +49,12 @@ void display(void) {
     plateXZ(-3.9, 0.01, -2.0, 1.8, 4.0);
     plateXZ(-4.0, 0.01, -3.9, 4.0, 1.8);
     plateXZ(-4.0, 0.01,  2.1, 4.0, 1.8);
+
+    // 床の間を描画
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wood);
+    cube(-4.0, 0.0, -5.0, 4.0, 0.3, 1.0);   // 床
+    cube(-4.1, 0.0, -4.1, 0.2, 3.0, 0.2);   // 柱
+    cube(-0.1, 0.0, -4.1, 0.2, 3.0, 0.2);   // 柱
 
     // バッファを交換
     glutSwapBuffers();
@@ -102,7 +109,7 @@ void init(void) {
     initRand();
 
     // ウィンドウを塗りつぶす色の設定
-    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClearColor(0.000, 0.482, 0.733, 1.0);
     // デプスバッファ
     glEnable(GL_DEPTH_TEST);
     // カリング
