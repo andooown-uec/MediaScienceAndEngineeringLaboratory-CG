@@ -4,7 +4,7 @@
 #include "draw/draw.h"
 #include "utility/utility.h"
 
-GLfloat light0pos[] = { 5.0, 5.0, 5.0, 1.0 };
+GLfloat light0pos[] = { 5.0, 5.0, 8.0, 1.0 };
 
 GLfloat red[]   = { 0.8, 0.2, 0.2, 1.0 };   // 赤
 GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };   // 緑
