@@ -113,8 +113,9 @@ void init(void) {
     // デプスバッファ
     glEnable(GL_DEPTH_TEST);
     // カリング
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_FRONT);
+    // glEnable(GL_CULL_FACE);
+    // glCullFace(GL_FRONT);
+    glDisable(GL_CULL_FACE);
     // ライティング
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
