@@ -4,7 +4,8 @@
 #include "draw/draw.h"
 #include "utility/utility.h"
 
-GLfloat light0pos[] = { 5.0, 5.0, 8.0, 1.0 };
+GLfloat light0pos[] = { 5.0, 5.0, 8.0, 1.0 };   // 太陽
+GLfloat light1pos[] = { 0.0, 2.9, 0.0, 1.0 };   // 室内灯
 
 GLfloat red[]   = { 0.8, 0.2, 0.2, 1.0 };   // 赤
 GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };   // 緑
@@ -35,6 +36,7 @@ void display(void) {
 
     // 光源の位置設定
     glLightfv(GL_LIGHT0, GL_POSITION, light0pos);
+    glLightfv(GL_LIGHT1, GL_POSITION, light1pos);
     
     // 畳の縁を描画
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, tatamiFrame);
@@ -129,6 +131,7 @@ void init(void) {
     // ライティング
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
     // 法線ベクトルの規格化
     glEnable(GL_NORMALIZE);
 }
