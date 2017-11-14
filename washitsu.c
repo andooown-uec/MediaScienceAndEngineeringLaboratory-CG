@@ -15,6 +15,7 @@ GLfloat tatamiFrame[]  = { 0.000, 0.431, 0.329, 1.0 };  // 畳の縁
 GLfloat tatamiGround[] = { 0.765, 0.847, 0.145, 1.0 };  // 畳
 GLfloat wall[] = { 1.000, 0.910, 0.678, 1.0 };          // 壁
 GLfloat wood[] = { 0.588, 0.314, 0.212, 1.0 };          // 木材
+GLfloat darkWood[] = { 0.443, 0.361, 0.122, 1.0 };      // 天井用の木材
 
 GLdouble ex = 0.0, ey = 1.5, ez = 3.5;  // 視点の位置
 
@@ -78,6 +79,11 @@ void display(void) {
     cube(-0.1, 2.0, -4.1, 8.0, 0.2, 0.2);   // 奥
     cube(-4.1, 2.0, -4.1, 0.2, 0.2, 8.0);   // 左
     cube( 3.9, 2.0, -4.1, 0.2, 0.2, 8.0);   // 右
+
+    // 天井を設置
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, darkWood);
+    plateXZ(-4.0, 3.0, -4.0, 8.0, 8.0);
+    plateXZ(-4.0, 3.0, -5.0, 4.0, 1.0); // 床の間
 
     // バッファを交換
     glutSwapBuffers();
