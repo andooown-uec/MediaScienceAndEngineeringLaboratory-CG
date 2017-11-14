@@ -11,6 +11,7 @@ GLfloat red[]   = { 0.8, 0.2, 0.2, 1.0 };   // 赤
 GLfloat green[] = { 0.0, 1.0, 0.0, 1.0 };   // 緑
 GLfloat blue[]  = { 0.2, 0.2, 0.8, 1.0 };   // 青
 GLfloat gray[]  = { 0.8, 0.8, 0.8, 1.0 };   // グレー
+GLfloat white[] = { 1.0, 1.0, 1.0, 1.0 };   // 白
 GLfloat tatamiFrame[]  = { 0.000, 0.431, 0.329, 1.0 };  // 畳の縁
 GLfloat tatamiGround[] = { 0.765, 0.847, 0.145, 1.0 };  // 畳
 GLfloat wall[] = { 1.000, 0.910, 0.678, 1.0 };          // 壁
@@ -66,8 +67,14 @@ void display(void) {
     // 床の間を描画
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wood);
     cube(-4.0, 0.0, -5.0, 4.0, 0.3, 1.0);
+    // 掛け軸の設置
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, tatamiFrame);
+    plateXY(-2.5, 0.7, -4.99, 1.0, 1.8);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, white);
+    plateXY(-2.45, 0.75, -4.98, 0.9, 1.7);
 
     // 縦の柱を設置
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wood);
     cube( 3.9, 0.0,  3.9, 0.2, 3.0, 0.2);   // 手前の右
     cube(-4.1, 0.0,  3.9, 0.2, 3.0, 0.2);   // 手前の左
     cube(-4.1, 0.0, -4.1, 0.2, 3.0, 0.2);   // 床の間の手前の左
