@@ -118,6 +118,8 @@ void init(void) {
     // ライティング
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+    // 法線ベクトルの規格化
+    glEnable(GL_NORMALIZE);
 }
 
 int main(int argc, char *argv[]) {
