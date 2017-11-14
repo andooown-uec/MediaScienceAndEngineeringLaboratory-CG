@@ -51,6 +51,15 @@ void display(void) {
     plateXZ(-4.0, 0.01, -3.9, 4.0, 1.8);
     plateXZ(-4.0, 0.01,  2.1, 4.0, 1.8);
 
+    // 壁を描画
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wall);
+    plateYZ(-4.0, 0.0, -4.0, 3.0, 8.0); // 左
+    plateYZ( 4.0, 0.0, -4.0, 3.0, 8.0); // 右
+    plateXY( 0.0, 0.0, -4.0, 4.0, 3.0); // 奥の右
+    plateYZ(-4.0, 0.0, -5.0, 3.0, 1.0); // 床の間の右
+    plateXY(-4.0, 0.0, -5.0, 4.0, 3.0); // 床の間の奥
+    plateYZ( 0.0, 0.0, -5.0, 3.0, 1.0); // 床の間の左
+
     // 床の間を描画
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wood);
     cube(-4.0, 0.0, -5.0, 4.0, 0.3, 1.0);   // 床
